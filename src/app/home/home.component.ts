@@ -11,13 +11,16 @@ import {Employee} from "../models/employee.model";
 })
 export class HomeComponent {
   languages: string[] = ['English', 'Spanish', 'Other'];
-  model = new Employee('Darla', 'Smith', true, 'w2', 'English');
+  model = new Employee('', '', false, '', 'default');
+  hasPrimaryLanguageError: boolean = false;
 
-  // firstNameToUpperCase(value: string): void {
-  //   if(value.length>0) {
-  //     this.model.firstName = value.charAt(0).toUpperCase() + value.slice(1);
-  //   } else {
-  //     this.model.firstName = value;
-  //   }
-  // }
+  validatePrimaryLanguage(value): void {
+    console.log('Lang: ' + this.model.primaryLanguage);
+    console.log('event:', event);
+    if(value === 'default') {
+      this.hasPrimaryLanguageError = true;
+    } else {
+      this.hasPrimaryLanguageError = false;
+    }
+  }
 }
