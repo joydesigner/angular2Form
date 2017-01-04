@@ -29,6 +29,7 @@ export class FormPoster {
 
   getLanguages(): Observable<any> {
     return this._http.get('http://localhost:3100/get-languages')
+      .delay(2000)
       .map(this.extractLanguages)
       .catch(this.handleError);
   }
