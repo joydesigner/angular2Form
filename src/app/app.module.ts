@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import {HomeComponent} from "./home/home.component";
 import {RouterModule} from "@angular/router";
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
+import {FormPoster} from "./services/form-poster.service";
 
 @NgModule({
   declarations: [
@@ -24,7 +25,7 @@ import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
       { path: 'home', component: HomeComponent }
     ])
   ],
-  providers: [],
+  providers: [FormPoster],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,6 +1,6 @@
 <h3>Employee Form</h3>
 
-<form #form="ngForm" novalidate>
+<form #form="ngForm" (submit)="submitForm(form)"  novalidate>
   <div class="form-group" [class.has-error]="firstName.invalid && firstName.touched">
     <label for="firstNameId" class="control-label">First Name</label>
     <input #firstName="ngModel" required pattern="...+" type="text" placeholder="Name" name="firstName" id="firstNameId" class="form-control"
@@ -15,8 +15,11 @@
 
   <div class="form-group">
     <label for="lastNameId">Last Name</label>
-    <input required type="text" placeholder="Name" name="lastName" id="lastNameId" class="form-control"
+    <input #lastName="ngModel" required type="text" placeholder="Last Name" pattern="...+" name="lastName" id="lastNameId" class="form-control"
            [(ngModel)] = "model.lastName" />
+    <div class="alert alert-danger" *ngIf='lastName.invalid && lastName.touched'>
+      Last name is required, and must be at least 3 characters.
+    </div>
   </div>
 
   <div class="checkbox">
