@@ -1,0 +1,24 @@
+
+
+.single-bill h3 {
+  font-family: 'Arial Bold', 'Arial Regular', 'Arial';
+  font-size: 18px;
+  color: #FF6600;
+  font-weight: 700;
+}
+
+#single-bill-form {
+  justify-content: flex-start;
+}
+
+#single-bill-form label {
+  padding-top: 6px;
+  font-weight: normal;
+}
+
+#single-bill-form .form-control {
+  height: 40px;
+}
+
+
+

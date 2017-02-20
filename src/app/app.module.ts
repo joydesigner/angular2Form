@@ -4,15 +4,21 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import {HomeComponent} from "./home/home.component";
 import {RouterModule} from "@angular/router";
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import {FormPoster} from "./services/form-poster.service";
+import {BillStartComponent} from "./bill/bill.start.component";
+import {SingleBillComponent} from "./bill/singleBill.component";
+import {MultiBillsComponent} from "./bill/multiBills.component";
+import {BillErrorComponent} from "./bill/bill.error.component";
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    BillStartComponent,
+    SingleBillComponent,
+    MultiBillsComponent,
+    BillErrorComponent
   ],
   imports: [
     BrowserModule,
@@ -20,9 +26,13 @@ import {FormPoster} from "./services/form-poster.service";
     HttpModule,
     NgbModule.forRoot(),
     RouterModule.forRoot([
-      { path: '', redirectTo: 'home', pathMatch: 'full' },
-      { path: '**', redirectTo: 'home', pathMatch: 'full' },
-      { path: 'home', component: HomeComponent }
+      { path: 'billerror', component: BillErrorComponent },
+      { path: 'paymybill', component: BillStartComponent },
+      { path: 'paybill', component: SingleBillComponent },
+      { path: 'multiBills', component: MultiBillsComponent },
+      { path: '', redirectTo: 'paybill', pathMatch: 'full' },
+      { path: '**', redirectTo: 'paybill', pathMatch: 'full' }
+
     ])
   ],
   providers: [FormPoster],

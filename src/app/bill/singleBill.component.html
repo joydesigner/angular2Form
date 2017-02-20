@@ -1,0 +1,121 @@
+<div class="container text-center error-container">
+  <i *ngIf="ifPageLoading && !hasError" class="glyphicon glyphicon-repeat loading-icon rotate"></i>
+  <div *ngIf="ifPageLoading && !hasError" class="loading loading-text">Going to payment portal</div>
+  <div class="row" *ngIf="hasError" [class.has-error]="errorMessage.length > 0">
+    <div class="row alert" *ngIf='errorMessage.length>0'>
+      <div class="col-md-12 text-center">
+        <h1>Oops :(</h1>
+        <h2>{{errorMessage}}</h2>
+      </div>
+      <div class="col-md-12 text-center">
+        <a class="error-btn-link" (click)="reload()">Return to the payment page</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container single-bill" *ngIf="!ifPageLoading && !hasError">
+  <div class="row">
+    <div class="col-md-12 text-center">
+      <a routerLink="/singleBill"><img src="../../assets/images/pwclogo.gif" alt="PwC logo"></a>
+      <h3>Bill payment</h3>
+      <ul class="info-box">
+        <li>We accept credit card payments up to <strong>$50,000</strong>. For all payment greater <strong>$50,000</strong> please call <strong>+61 2 8266 1770</strong>.</li>
+        <li>This is currently only built for PwC Australia. Only <strong>AUD</strong> is available. </li>
+      </ul>
+
+      <hr class="separator">
+
+      <div class="info-box">
+        <p class="text-center"><strong>Please enter  your Debtor and Invoice details (Step 1 of 2).</strong></p>
+        <p class="text-center"><span class="asterisk">*</span> is required field.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <!-- single bill form -->
+      <form #singleBillForm="ngForm" (submit)="submitSingleBillForm(form)" id="single-bill-form" novalidate>
+        <!-- debtor id field -->
+        <div class="form-group row" [class.has-error]="debtorId.invalid && debtorId.touched">
+          <div class="col-md-2"></div>
+          <label for="debtorId" class="col-md-3 col-form-label text-right">Debtor Number <span class="asterisk">*</span></label>
+          <div class="col-md-3">
+            <input #debtorId="ngModel" maxlength="8" required pattern="\d{8}" type="text" placeholder="Please enter debtor number..." name="debtorId" id="debtorId" class="form-control"
+                   [(ngModel)]="outstandingBill.debtorId"
+            />
+          </div>
+          <div class="col-md-4"></div>
+        </div>
+        <div class="row alert alert-danger" *ngIf='debtorId.invalid && debtorId.touched'>
+          <div class="col-md-12 text-center">
+            Oops: Debtor number is required, and must be 8 digits.
+          </div>
+        </div>
+        <!-- Bill ID field -->
+        <div class="form-group row" [class.has-error]="billId.invalid && billId.touched">
+          <div class="col-md-2"></div>
+          <label for="billId" class="col-md-3 col-form-label text-right">Bill Number <span class="asterisk">*</span></label>
+          <div class="col-md-3">
+            <input #billId="ngModel" maxlength="8" required pattern="\d{8}" type="text" placeholder="Please enter bill number..." name="billId" id="billId" class="form-control"
+                   [(ngModel)]="outstandingBill.billId" />
+          </div>
+          <div class="col-md-4"></div>
+        </div>
+
+        <div class="row alert alert-danger" *ngIf='billId.invalid && billId.touched'>
+          <div class="col-md-12 text-center">
+            Oops: Bill number is required, and must be 8 digits.
+          </div>
+        </div>
+        <!-- phone number field -->
+        <div class="form-group row" [class.has-error]="phoneNumber.invalid && phoneNumber.touched">
+          <div class="col-md-2"></div>
+          <label for="billId" class="col-md-3 col-form-label text-right">Phone Number <span class="asterisk">*</span></label>
+          <div class="col-md-3">
+            <input #phoneNumber="ngModel" maxlength="16" required pattern="^\({0,1}((0|\+61)(2|4|3|7|8)){0,1}\){0,1}(\ |-){0,1}[0-9]{2}(\ |-){0,1}[0-9]{2}(\ |-){0,1}[0-9]{1}(\ |-){0,1}[0-9]{3}$" type="text" placeholder="Please enter phone number..." name="phoneNumber" id="phoneNumber" class="form-control"
+                   [(ngModel)]="outstandingBill.phoneNumber" />
+          </div>
+          <div class="col-md-4"></div>
+        </div>
+
+        <div class="row alert alert-danger" *ngIf='phoneNumber.invalid && phoneNumber.touched'>
+          <div class="col-md-12 text-center">
+            Oops: Phone number is required, and should be a legal phone number.
+          </div>
+        </div>
+
+        <!-- email field -->
+        <div class="form-group row" [class.has-error]="email.invalid && email.touched">
+          <div class="col-md-2"></div>
+          <label for="email" class="col-md-3 col-form-label text-right">Email Address <span class="asterisk">*</span></label>
+          <div class="col-md-3">
+            <input #email="ngModel" maxlength="40" required pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$" type="email" placeholder="Please enter email address..." name="email" id="email" class="form-control"
+                   [(ngModel)]="outstandingBill.emailAddress" />
+          </div>
+          <div class="col-md-4"></div>
+        </div>
+
+        <div class="row alert alert-danger" *ngIf='email.invalid && email.touched'>
+          <div class="col-md-12 text-center">
+            Oops: Email is required, and should be a legal email address.
+          </div>
+        </div>
+
+        <!-- action group buttons -->
+        <div class="row action-group">
+          <div class="col-md-3"></div>
+          <div class="col-md-3 text-right">
+            <button class="btn pwc-btn-secondary full-width" type="button" (click)="resetForm(singleBillForm)" >Reset <i class="glyphicon glyphicon-refresh"></i></button>
+          </div>
+
+          <div class="col-md-3">
+            <button class= "btn pwc-btn-primary full-width" type="submit" [disabled]="singleBillForm.invalid">Next <i class="glyphicon glyphicon-step-forward"></i></button>
+          </div>
+          <div class="col-md-3"></div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

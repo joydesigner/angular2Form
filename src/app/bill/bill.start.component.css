@@ -1,0 +1,18 @@
+.bill-startpage-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction:column;
+  margin-top: 50px;
+}
+
+.bill-start-btn {
+  width: 180px;
+  padding: 10px;
+  margin: 15px;
+  background-color: #a32020;
+  color: #ffffff;
+  -webkit-border-radius: 35px;
+  -moz-border-radius: 35px;
+  border-radius: 35px;
+}

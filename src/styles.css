@@ -1,1 +1,150 @@
 /* You can add global styles to this file, and also import other style files */
+.container {
+  padding: 15px;
+  margin: auto;
+}
+
+.container .form-group {
+  margin-bottom: 30px;
+}
+
+.col-form-label {
+  margin-top: 2px;
+}
+
+.pwc-orange {
+  color: #FF6600;
+}
+
+.separator {
+  border-top: 1px solid #8c8b8b;
+}
+
+.asterisk {
+  color: #a32020;
+  position: relative;
+  top: 3px;
+}
+
+.action-group {
+  position: relative;
+  top: 15px;
+}
+
+.btn.pwc-btn-primary {
+  background: #a32020;
+}
+
+.btn.pwc-btn-primary,
+.btn.pwc-btn-secondary {
+  height: 40px;
+  margin-bottom: 20px;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.btn.pwc-btn-primary:hover,
+.btn.pwc-btn-primary:visited,
+.btn.pwc-btn-primary:active,
+.btn.pwc-btn-secondary:hover,
+.btn.pwc-btn-secondary:visited,
+.btn.pwc-btn-secondary:active {
+  color: #dcdcdc;
+}
+
+.btn.pwc-btn-secondary {
+  background: #dc6900;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.info-box {
+  list-style: none;
+  padding: 15px;
+}
+
+.info-box li {
+  margin-top: 10px;
+  line-height: 16px;
+}
+
+.rotate {
+  animation-name: spin;
+  animation-duration: 1000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes spin {
+  from {transform:rotate(0deg);}
+  to {transform:rotate(360deg);}
+}
+
+.loading-icon {
+  margin-top: 50px;
+  font-size: 72px;
+  color: #FF6600;
+}
+
+.loading-text {
+  font-size: 32px;
+  color: #FF6600;
+  font-weight: bold;
+}
+
+.loading {
+  font-size: 30px;
+}
+
+.loading:after {
+  overflow: hidden;
+  display: inline-block;
+  vertical-align: bottom;
+  -webkit-animation: ellipsis steps(4,end) 900ms infinite;
+  animation: ellipsis steps(4,end) 900ms infinite;
+  content: "\2026"; /* ascii code for the ellipsis character */
+  width: 0px;
+}
+
+@keyframes ellipsis {
+  to {
+    width: 1.25em;
+  }
+}
+
+@-webkit-keyframes ellipsis {
+  to {
+    width: 1.25em;
+  }
+}
+
+.error-container {
+}
+
+.error-container h1 {
+  color: #e0301e;
+  font-size: 36px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.error-container h2 {
+  color: #666666;
+  font-size: 24px;
+  font-weight: 400;
+  margin-top: 50px;
+}
+
+.error-btn-link {
+  display: inline-block;
+  color: #169BD5;
+  font-size: 18px;
+  margin-top: 50px;
+}
+
+.error-btn-link:hover {
+  color: #FF6600;
+  cursor: pointer;
+}

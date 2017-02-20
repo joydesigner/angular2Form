@@ -2,46 +2,32 @@
 /**
  * Created by Xin J Zheng on 4/01/2017.
  */
-import {Injectable} from "@angular/core";
-import {Http, Headers, RequestOptions, Response} from "@angular/http";
-import {Employee} from "../models/employee.model";
-import {Observable} from "rxjs";
+import { Injectable } from "@angular/core";
+import { Http, Headers, RequestOptions, Response } from "@angular/http";
+import { BillForm } from "../models/billForm.model";
+import { Observable } from "rxjs";
 import 'rxjs/add/operator/map';
+import { environment } from "../../environments/environment";
 
 @Injectable()
 export class FormPoster {
   constructor(private _http: Http) {}
 
   private extractData(res: Response) {
-    let body = res.json();
-    return body.fields || {};
-  }
-
-  private extractLanguages(res: Response) {
-    let body = res.json();
-    return body.data || {};
+    return res.json() || {};
   }
 
   private handleError(error: Response) {
-    console.error('post error: ', error);
-    return Observable.throw(error.statusText);
+    return Observable.throw(error);
   }
 
-  getLanguages(): Observable<any> {
-    return this._http.get('http://localhost:3100/get-languages')
-      .delay(2000)
-      .map(this.extractLanguages)
-      .catch(this.handleError);
-  }
-
-  postEmployeeForm(employee: Employee):Observable<Response> {
-    let body = JSON.stringify(employee);
+  postBillForm(billForm: BillForm):Observable<Response> {
+    let body = JSON.stringify(billForm);
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
 
-
-    return this._http.post('http://localhost:3100/postemployee', body, options)
-      .map(this.extractData)
+    return this._http.post(environment.apiUrl, body, options)
+      .map(this.extractData )
       .catch(this.handleError);
   }
 }
