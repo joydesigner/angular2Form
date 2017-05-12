@@ -4,20 +4,21 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import {RouterModule} from "@angular/router";
-import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
-import {FormPoster} from "./services/form-poster.service";
-import {BillStartComponent} from "./bill/bill.start.component";
-import {SingleBillComponent} from "./bill/singleBill.component";
-import {MultiBillsComponent} from "./bill/multiBills.component";
-import {BillErrorComponent} from "./bill/bill.error.component";
+import { RouterModule } from '@angular/router';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormPoster } from './services/form-poster.service';
+import { SingleBillComponent } from './bill/singleBill.component';
+import { BillErrorComponent } from './bill/bill.error.component';
+import { ResultSuccessComponent } from './result/result.success.component';
+import { ResultFailComponent } from './result/result.fail.component';
+import { Utilities } from './services/utilities.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    BillStartComponent,
     SingleBillComponent,
-    MultiBillsComponent,
+    ResultSuccessComponent,
+    ResultFailComponent,
     BillErrorComponent
   ],
   imports: [
@@ -27,15 +28,15 @@ import {BillErrorComponent} from "./bill/bill.error.component";
     NgbModule.forRoot(),
     RouterModule.forRoot([
       { path: 'billerror', component: BillErrorComponent },
-      { path: 'paymybill', component: BillStartComponent },
       { path: 'paybill', component: SingleBillComponent },
-      { path: 'multiBills', component: MultiBillsComponent },
+      { path: 'Success', component: ResultSuccessComponent },
+      { path: 'Fail', component: ResultFailComponent },
       { path: '', redirectTo: 'paybill', pathMatch: 'full' },
       { path: '**', redirectTo: 'paybill', pathMatch: 'full' }
 
     ])
   ],
-  providers: [FormPoster],
+  providers: [FormPoster, Utilities],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

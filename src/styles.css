@@ -85,12 +85,12 @@
 .loading-icon {
   margin-top: 50px;
   font-size: 72px;
-  color: #FF6600;
+  color: #a32020;
 }
 
 .loading-text {
   font-size: 32px;
-  color: #FF6600;
+  color: #a32020;
   font-weight: bold;
 }
 
@@ -124,7 +124,7 @@
 }
 
 .error-container h1 {
-  color: #e0301e;
+  color: #a32020;
   font-size: 36px;
   text-align: center;
   font-weight: bold;
@@ -139,7 +139,7 @@
 
 .error-btn-link {
   display: inline-block;
-  color: #169BD5;
+  color: #337AB7;
   font-size: 18px;
   margin-top: 50px;
 }
@@ -148,3 +148,11 @@
   color: #FF6600;
   cursor: pointer;
 }
+
+.pwc-logo {
+  display: block;
+  text-align: center;
+}
+
+
+

@@ -18,16 +18,16 @@
   <div class="row">
     <div class="col-md-12 text-center">
       <a routerLink="/singleBill"><img src="../../assets/images/pwclogo.gif" alt="PwC logo"></a>
-      <h3>Bill payment</h3>
+      <h3>ePayment - Pay your bills anytime...</h3>
       <ul class="info-box">
         <li>We accept credit card payments up to <strong>$50,000</strong>. For all payment greater <strong>$50,000</strong> please call <strong>+61 2 8266 1770</strong>.</li>
-        <li>This is currently only built for PwC Australia. Only <strong>AUD</strong> is available. </li>
+        <li>This is currently only for PwC Australia. Only <strong>AUD</strong> is available. </li>
       </ul>
 
       <hr class="separator">
 
       <div class="info-box">
-        <p class="text-center"><strong>Please enter  your Debtor and Invoice details (Step 1 of 2).</strong></p>
+        <p class="text-center"><strong>Please enter  your Debtor and Invoice details.</strong></p>
         <p class="text-center"><span class="asterisk">*</span> is required field.</p>
       </div>
     </div>
@@ -36,13 +36,13 @@
   <div class="row">
     <div class="col-md-12">
       <!-- single bill form -->
-      <form #singleBillForm="ngForm" (submit)="submitSingleBillForm(form)" id="single-bill-form" novalidate>
+      <form #singleBillForm="ngForm" (submit)="submitSingleBillForm()" id="single-bill-form" novalidate>
         <!-- debtor id field -->
         <div class="form-group row" [class.has-error]="debtorId.invalid && debtorId.touched">
           <div class="col-md-2"></div>
           <label for="debtorId" class="col-md-3 col-form-label text-right">Debtor Number <span class="asterisk">*</span></label>
           <div class="col-md-3">
-            <input #debtorId="ngModel" maxlength="8" required pattern="\d{8}" type="text" placeholder="Please enter debtor number..." name="debtorId" id="debtorId" class="form-control"
+            <input #debtorId="ngModel" [maxlength]="8" required pattern="\d{8}" type="text" placeholder="Please enter debtor number..." name="debtorId" id="debtorId" class="form-control"
                    [(ngModel)]="outstandingBill.debtorId"
             />
           </div>
@@ -58,7 +58,7 @@
           <div class="col-md-2"></div>
           <label for="billId" class="col-md-3 col-form-label text-right">Bill Number <span class="asterisk">*</span></label>
           <div class="col-md-3">
-            <input #billId="ngModel" maxlength="8" required pattern="\d{8}" type="text" placeholder="Please enter bill number..." name="billId" id="billId" class="form-control"
+            <input #billId="ngModel" [maxlength]="8" required pattern="\d{8}" type="text" placeholder="Please enter bill number..." name="billId" id="billId" class="form-control"
                    [(ngModel)]="outstandingBill.billId" />
           </div>
           <div class="col-md-4"></div>
@@ -74,7 +74,7 @@
           <div class="col-md-2"></div>
           <label for="billId" class="col-md-3 col-form-label text-right">Phone Number <span class="asterisk">*</span></label>
           <div class="col-md-3">
-            <input #phoneNumber="ngModel" maxlength="16" required pattern="^\({0,1}((0|\+61)(2|4|3|7|8)){0,1}\){0,1}(\ |-){0,1}[0-9]{2}(\ |-){0,1}[0-9]{2}(\ |-){0,1}[0-9]{1}(\ |-){0,1}[0-9]{3}$" type="text" placeholder="Please enter phone number..." name="phoneNumber" id="phoneNumber" class="form-control"
+            <input #phoneNumber="ngModel" [maxlength]="10" required pattern="^\({0,1}((0|\+61)(2|4|3|7|8)){0,1}\){0,1}(\ |-){0,1}[0-9]{2}(\ |-){0,1}[0-9]{2}(\ |-){0,1}[0-9]{1}(\ |-){0,1}[0-9]{3}$" type="text" placeholder="Please enter phone number..." name="phoneNumber" id="phoneNumber" class="form-control"
                    [(ngModel)]="outstandingBill.phoneNumber" />
           </div>
           <div class="col-md-4"></div>
@@ -91,7 +91,7 @@
           <div class="col-md-2"></div>
           <label for="email" class="col-md-3 col-form-label text-right">Email Address <span class="asterisk">*</span></label>
           <div class="col-md-3">
-            <input #email="ngModel" maxlength="40" required pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$" type="email" placeholder="Please enter email address..." name="email" id="email" class="form-control"
+            <input #email="ngModel" [maxlength]="40" required pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$" type="email" placeholder="Please enter email address..." name="email" id="email" class="form-control"
                    [(ngModel)]="outstandingBill.emailAddress" />
           </div>
           <div class="col-md-4"></div>

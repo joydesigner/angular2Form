@@ -1,4 +1,7 @@
 export const environment = {
   production: true,
-  apiUrl: "http://au-aa00igapp001/api/OutstandingBills"
+  apiUrlPayBill: 'https://epay.pwc.com.au/api/paybill',
+  apiUrlPostResult: 'https://epay.pwc.com.au/api/postResult',
+  clientUrl: 'https://epay.pwc.com.au',
+  defaultHomeRoute: 'paybill'
 };
